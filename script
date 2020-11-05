@@ -1,0 +1,16 @@
+#print log
+docker logs vpn-server
+#check status
+docker exec -it vpn-server ipsec status
+#list users
+docker exec -it vpn-server l2tpctl -l
+#add user
+docker exec -it vpn-server l2tpctl -a
+#delete user
+docker exec -it vpn-server l2tpctl -d
+#change pwd
+docker exec -it vpn-server l2tpctl -m
+#Print libreswan & xl2tpd version
+docker exec -it vpn-server l2tpctl -v
+#Print help information
+docker exec -it vpn-server l2tpctl -h
