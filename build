@@ -2,4 +2,4 @@
 docker container kill $(docker ps | grep "vpn-server" | awk '{ print $1 }')
 docker rm $(docker ps -a | grep "vpn-server" | awk '{ print $1 }')
 docker build -t vpn-server .
-docker run --name vpn-server --restart=always --env-file ./vpn.env  -p 500:500/udp -p 4500:4500/udp -d -it --privileged -v "$(pwd)/vpn.env:/opt/src/vpn.env:ro" vpn-server
+docker run --name vpn-server --restart=always --network=host --env-file ./vpn.env  -p 500:500/udp -p 4500:4500/udp -d -it --privileged -v "$(pwd)/vpn.env:/opt/src/vpn.env:ro" vpn-server
